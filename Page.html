@@ -8,56 +8,10 @@
       margin: 40px;
     }
 
-    .donate-button {
-      background-color: #4CAF50;
-      color: white;
-      padding: 12px 24px;
-      border: none;
-      border-radius: 10px;
-      cursor: pointer;
-    }
-
-    .donate-button:hover {
-      background-color: #45a049;
-    }
-
     .container {
       display: flex;
       flex-direction: column;
       align-items: center;
-    }
-
-    .api-key-container {
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      width: 100%;
-      margin-bottom: 20px;
-    }
-
-    .api-key-textbox {
-      width: fit-content;
-      background-color: #f0f0f0;
-      padding: 12px;
-      border-radius: 10px;
-      margin-right: 10px;
-    }
-
-    .api-key-textbox input[type="password"] {
-      width: 100%;
-      border: none;
-      background-color: transparent;
-      font-family: Arial, sans-serif;
-      font-size: 16px;
-      color: #999;
-      -webkit-text-security: disc;
-      -moz-text-security: disc;
-      text-security: disc;
-    }
-
-    .api-key-textbox input[type="password"]:focus {
-      outline: none;
-      color: #333;
     }
 
     .enter-button {
@@ -123,48 +77,6 @@
       text-align: center;
     }
 
-    .slidecontainer {
-      text-align: center;
-      margin-bottom: 20px;
-    }
-
-    .slider-label {
-      font-size: 14px;
-      font-weight: bold;
-      margin-bottom: 8px;
-    }
-
-    .slider {
-      width: 100%;
-      -webkit-appearance: none;
-      appearance: none;
-      height: 8px;
-      border-radius: 4px;
-      background-color: #f0f0f0;
-      outline: none;
-      opacity: 0.7;
-      -webkit-transition: .2s;
-      transition: opacity .2s;
-    }
-
-    .slider::-webkit-slider-thumb {
-      -webkit-appearance: none;
-      appearance: none;
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background-color: #4CAF50;
-      cursor: pointer;
-    }
-
-    .slider::-moz-range-thumb {
-      width: 20px;
-      height: 20px;
-      border-radius: 50%;
-      background-color: #4CAF50;
-      cursor: pointer;
-    }
-
     /* Custom styles for dropdown menu */
     .model-select {
       display: inline-block;
@@ -219,12 +131,6 @@
 </head>
 <body>
   <div class="container">
-    <div class="api-key-container">
-      <div class="api-key-textbox">
-        <input type="password" placeholder="Enter API Key" onfocus="if(this.value=='Enter API Key')this.value='';" onblur="if(this.value=='')this.value='Enter API Key';">
-      </div>
-      <button class="enter-button">Enter</button>
-    </div>
     <div class="textbox" id="output"><?= value ?></div>
     <div class="button-container">
       <button class="copy-button" onclick="copyToClipboard()">Copy to Clipboard</button>
@@ -232,48 +138,5 @@
     <div class="tokens">Tokens Used In Request: <?= val ?></div>
     <div class="message" id="message"></div>
   </div>
-
-  <div class="slidecontainer">
-    <label for="myRange" class="slider-label">Temperature</label>
-    <input type="range" min="0" max="1" value="0" step="0.1" class="slider" id="myRange">
-    <p>Value: <span id="demo1"></span></p>
-  </div>
-
-  <div class="slidecontainer">
-    <label for="myRange2" class="slider-label">Max Tokens</label>
-    <input type="range" min="0" max="1020" value="0" step="5" class="slider" id="myRange2">
-    <p>Value: <span id="demo2"></span></p>
-  </div>
-
-  <div class="container">
-    <div class="model-select">
-      <label for="model">Choose Model:</label>
-      <select name="model" id="model">
-        <option value="text-davinci-003">davinci</option>
-        <option value="text-curie-001">curie</option>
-      </select>
-    </div>
-    <div class="button-container" style="margin-bottom: 40px;">
-      <a href="Insert_Donation_Link" target="_blank" class="donate-button">Donate</a>
-    </div>
-  </div>
-
-  <script>
-    var slider1 = document.getElementById("myRange");
-    var output1 = document.getElementById("demo1");
-    output1.innerHTML = slider1.value;
-
-    slider1.oninput = function() {
-      output1.innerHTML = this.value;
-    };
-
-    var slider2 = document.getElementById("myRange2");
-    var output2 = document.getElementById("demo2");
-    output2.innerHTML = slider2.value;
-
-    slider2.oninput = function() {
-      output2.innerHTML = this.value;
-    };
-  </script>
 </body>
 </html>
