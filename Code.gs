@@ -1,6 +1,7 @@
 // Constants
-const API_KEY = "INSERT_API_KEY";
-const MODEL_TYPE = "text-curie-001"; //chatGPT model
+var API_KEY = "";
+var scriptProperties = PropertiesService.getScriptProperties();
+var MODEL_TYPE = "text-curie-001"; //chatGPT model
 
 var finalString = "";
 var tokensUsed = 0;
@@ -9,21 +10,13 @@ var totaltokens = 0;
 // Creates a custom menu in Google Docs
 function onOpen() {
   DocumentApp.getUi().createMenu("DocuGPT")
-    .addItem("Finish Idea", "generateIdeas")
+    .addItem("Enter API Key", "daAPIKEY")
+    .addSubMenu(DocumentApp.getUi().createMenu('Models')
+      .addItem('Davinci', 'DavinciMenu')
+      .addItem('Curie', 'CurieMenu'))
     .addItem("Show Sidebar", "showSidebar")
+    .addItem("Finish Idea", "generateIdeas")
     .addToUi();
-}
-
-function getFinalString() {
-  return finalString;
-}
-
-function getTokensUsed(){
-  return tokensUsed;
-}
-
-function getTotalTokensUsed(){
-  return totaltokens;
 }
 
 function getSelectedText() {
@@ -57,18 +50,32 @@ function getSelectedText() {
   return text;
 }
 
+function DavinciMenu(){
+  scriptProperties.setProperty('model', "text-davinci-003");
+}
+
+function CurieMenu(){
+  scriptProperties.setProperty('model', "text-curie-001");
+}
+
+function daAPIKEY(){
+  var ui = DocumentApp.getUi();
+  var response = ui.prompt('Enter API Key', ui.ButtonSet.OK);
+  scriptProperties.setProperty('dafinalAPIKEY', response.getResponseText());
+}
 
 function showSidebar() {
   var template = HtmlService.createTemplateFromFile('Page');
   template.value = getFinalString();
   template.val = getTokensUsed();
-  template.totval = getTotalTokensUsed();
   var html = template.evaluate().setTitle('DocuGPT');
   DocumentApp.getUi().showSidebar(html);
 }
 
 // Generates prompt based on the selected text and adds it to the document
 function generateIdeas() {
+  API_KEY = scriptProperties.getProperty('dafinalAPIKEY');
+  MODEL_TYPE = scriptProperties.getProperty('model');
   const doc = DocumentApp.getActiveDocument();
   const selectedText = getSelectedText()
   const body = doc.getBody();
@@ -109,4 +116,12 @@ function generateIdeas() {
   finalString = finalString.replace(/(\r\n|\n|\r)/gm, "");
 
   showSidebar();
+}
+
+function getFinalString() {
+  return finalString;
+}
+
+function getTokensUsed(){
+  return tokensUsed;
 }
