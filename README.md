@@ -19,6 +19,7 @@ Before you begin, ensure you have an OpenAI API key. If you don't have one, visi
 1. Open Google Docs and create a new document or open an existing one.
 2. Click on `Extensions` > `Apps Script`.
 3. Delete any code in the script editor and replace it with the code from the `Code.gs` file from the cloned or downloaded repository.
+4. Delete any code in the Page.html script and copy paste the HTML code from this github.
 
 ### Step 3: Adding Your API Key
 
