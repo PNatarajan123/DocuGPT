@@ -35,7 +35,7 @@ Before you begin, ensure you have an OpenAI API key. If you don't have one, visi
 
 ## Using DocuGPT
 
-With the script now embedded in your Google Docs, you can use it to generate text, summarize content, and perform other tasks supported by the GPT model directly in your document. Click on the menu item added by your script to see the available options and start interacting with GPT.
+With the script now embedded in your Google Docs, you can use it to generate text, summarize content, and perform other tasks supported by the GPT model directly in your document. Click on the menu item added by your script to see the available options and start interacting with GPT by highlighting a section of writing and pressing the "Finish Idea" button.
 
 ## Troubleshooting
 
